@@ -1,0 +1,20 @@
+"""
+                                === Функции для сохранения и загрузки ===
+
+                                    === Версия приложения: 0.1.0 ===
+"""
+import json
+
+
+### Сохранение задач
+def save_tasks(task_collection, name_file):
+    with open(name_file, "w", encoding="utf-8") as file:
+        json.dump(task_collection, file, ensure_ascii=False, indent=4)
+
+### Загрузка задач
+def load_tasks(name_file):
+    try:
+        with open(name_file, "r", encoding="utf-8") as file:
+            return file.readlines()
+    except FileNotFoundError:
+        return []
